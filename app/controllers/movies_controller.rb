@@ -19,10 +19,8 @@ class MoviesController < ApplicationController
     rescue VideoInfo::UrlError
       redirect_to new_movie_path, alert: "Invalid URL or unsupported video provider"
     rescue StandardError => e
-      logger.error e.backtrace.join("-------------------------------")
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      logger.error e.backtrace.join("-------------------------------")
       redirect_to new_movie_path, alert: "An error occurred while sharing the video"
     end
   end
