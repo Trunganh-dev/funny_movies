@@ -1,0 +1,44 @@
+# == Schema Information
+#
+# Table name: movies
+#
+#  id               :bigint           not null, primary key
+#  description      :text(65535)
+#  thumb_url        :string(255)      not null
+#  title            :string(255)      not null
+#  vote_downs_count :bigint           default(0), not null
+#  vote_ups_count   :bigint           default(0), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :bigint           not null
+#  video_id         :string(255)      not null
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+movie1:
+  id: 1
+  user_id: 1
+  title: "Thế Chiến 1"
+  description: "Video được xuất bản với mục đích giải trí vui vẻ, vui lòng không coi là tài liệu giáo dục. \n Các bạn hoàn toàn có thể tham khảo những nguồn tài liệu sau: - https://vi.wikipedia.org/wiki/Chi%E1%BA%BFn_tranh_th%E1%BA%BF_gi%E1%BB%9Bi_th%E1%BB%A9_nh%E1%BA%A5t"
+  thumb_url: "https://i3.ytimg.com/vi/iCAdtp_CNno/maxresdefault.jpg"
+  video_id: "iCAdtp_CNno"
+  vote_ups_count: 1
+  vote_downs_count: 0
+  created_at: Sat, 08 Oct 2022 09:59:07.999932000 UTC +00:00
+  updated_at: Sat, 08 Oct 2022 09:59:07.999932000 UTC +00:00
+
+movie2:
+  id: 2
+  user_id: 1
+  title: "Chiến Tranh Pháp-Đại Nam | Nam Kỳ"
+  description: "Video được xuất bản với mục đích giải trí vui vẻ, có nhiều chi tiết không đúng và sai sót, vui lòng không coi là tài liệu giáo dục...."
+  thumb_url: "https://i3.ytimg.com/vi/ZTI_S2OnoTs/maxresdefault.jpg"
+  video_id: "ZTI_S2OnoTs"
+  vote_ups_count: 0
+  vote_downs_count: 0
+  created_at: Sat, 08 Oct 2022 10:59:07.999932000 UTC +00:00
+  updated_at: Sat, 08 Oct 2022 10:59:07.999932000 UTC +00:00
+
