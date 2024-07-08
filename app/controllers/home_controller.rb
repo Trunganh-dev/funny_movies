@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   before_action :authenticate_user!, only: :share
 
@@ -6,5 +8,8 @@ class HomeController < ApplicationController
     per_page = params[:per_page] || 10
 
     @movies = Movie.page(page).per(per_page)
+  end
+
+  def share
   end
 end

@@ -9,6 +9,10 @@
 #  movie_id   :bigint           not null
 #  user_id    :bigint           not null
 #
+# Indexes
+#
+#  index_votes_on_movie_id_and_user_id  (movie_id,user_id) UNIQUE
+#
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VotesController < ApplicationController
   before_action :authenticate_user!
 
@@ -5,8 +7,7 @@ class VotesController < ApplicationController
     @vote = current_user.votes.new(normalize_parameters)
 
     if @vote.save
-      redirect_to root_path, notice: "Vote Success"
-
+      redirect_to root_path, notice: I18n.t('notices.vote_success')
       return
     end
 
@@ -14,11 +15,10 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @vote = current_user.votes.find_by_id params[:id]
+    @vote = current_user.votes.find_by(id: params[:id])
 
     if @vote.destroy
-      redirect_to root_path, notice: "Unvote Success"
-
+      redirect_to root_path, notice: I18n.t('notices.unvote_success')
       return
     end
 
@@ -27,7 +27,7 @@ class VotesController < ApplicationController
 
   private
 
-  def normalize_parameters
-    params.require(:vote).permit(:movie_id, :vote_type)
-  end
+    def normalize_parameters
+      params.require(:vote).permit(:movie_id, :vote_type)
+    end
 end

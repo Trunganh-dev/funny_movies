@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class VoteVideoTest < ActionDispatch::IntegrationTest
@@ -22,7 +24,7 @@ class VoteVideoTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?('Unvote Success')
 
-    within ".movie-2-#{@one.id}" do |scope|
+    within ".movie-2-#{@one.id}" do |_scope|
       assert page.has_content?(@one.vote_ups_count)
     end
   end
@@ -40,8 +42,8 @@ class VoteVideoTest < ActionDispatch::IntegrationTest
     @two.reload
 
     assert page.has_content?('Vote Success')
-    
-    within ".movie-1-#{@two.id}" do |scope|
+
+    within ".movie-1-#{@two.id}" do |_scope|
       assert page.has_content?(@two.vote_ups_count)
     end
   end

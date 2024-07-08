@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: movies
@@ -13,8 +15,12 @@
 #  user_id          :bigint           not null
 #  video_id         :string(255)      not null
 #
+# Indexes
+#
+#  index_movies_on_video_id  (video_id) UNIQUE
+#
 class Movie < ApplicationRecord
-  validates_presence_of :title, :thumb_url
+  validates :title, :thumb_url, presence: true
   validates :video_id, presence: true, uniqueness: true
 
   belongs_to :user, inverse_of: :movies

@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     if resource_class.find_by(email: sign_in_params['email']).present?
       super
-      
+
       return
     end
 
@@ -36,7 +36,7 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def build_resource(hash = {})
-    self.resource = resource_class.new_with_session(hash, session)
-  end
+    def build_resource(hash = {})
+      self.resource = resource_class.new_with_session(hash, session)
+    end
 end

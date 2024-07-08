@@ -30,4 +30,20 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        vote:
+          attributes:
+            movie_id:
+              taken: 'has been voted'
+  notices:
+    vote_success: "Vote Success"
+    unvote_success: "Unvote Success"
+    share_success: "Share success"
+    share_error: "Share video Error"
+    invalid_url: "Invalid URL or unsupported video provider"
+    general_error: "An error occurred while sharing the video"
+  alerts:
+    vote_failed: "Vote Failed"
+    unvote_failed: "Unvote Failed"

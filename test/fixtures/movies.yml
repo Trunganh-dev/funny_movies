@@ -13,6 +13,10 @@
 #  user_id          :bigint           not null
 #  video_id         :string(255)      not null
 #
+# Indexes
+#
+#  index_movies_on_video_id  (video_id) UNIQUE
+#
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately

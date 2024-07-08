@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: movies
@@ -12,6 +14,10 @@
 #  updated_at       :datetime         not null
 #  user_id          :bigint           not null
 #  video_id         :string(255)      not null
+#
+# Indexes
+#
+#  index_movies_on_video_id  (video_id) UNIQUE
 #
 require "test_helper"
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'home#index'
 
@@ -5,7 +7,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :movies, only: [:new, :create]
-  resources :votes, only: [:create, :destroy]
-  
+  resources :movies, only: %i[new create]
+  resources :votes, only: %i[create destroy]
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: votes
@@ -8,6 +10,10 @@
 #  updated_at :datetime         not null
 #  movie_id   :bigint           not null
 #  user_id    :bigint           not null
+#
+# Indexes
+#
+#  index_votes_on_movie_id_and_user_id  (movie_id,user_id) UNIQUE
 #
 require "test_helper"
 
