@@ -9017,3 +9017,23 @@ Started GET "/cable/" [WebSocket] for ::1 at 2024-07-09 01:34:00 +0700
 Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
 NotificationChannel is transmitting the subscription confirmation
 NotificationChannel is streaming from notification_channel
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_USERNAME[0m and [36mDATABASE_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m

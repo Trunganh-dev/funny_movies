@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# app/controllers/votes_controller.rb
 class VotesController < ApplicationController
   before_action :authenticate_user!
 
@@ -22,7 +23,7 @@ class VotesController < ApplicationController
       return
     end
 
-    redirect_to root_path, alert: @vote.errors.full_messages
+    redirect_to root_path, alert: I18n.t('notices.unvote_failed')
   end
 
   private

@@ -16,6 +16,7 @@ class MoviesController < ApplicationController
                                    { message: "A new video has been shared by #{current_user.email}: #{@movie.title}" })
       redirect_to root_path, notice: I18n.t('notices.share_success')
     else
+      logger.error @movie.errors.full_messages
       redirect_to new_movie_path, alert: @movie.errors.full_messages.join(', ')
     end
   rescue VideoInfo::UrlError
