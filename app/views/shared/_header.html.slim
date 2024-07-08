@@ -1,0 +1,27 @@
+.header-wrapper
+  .header
+    .logo-wrapper
+      i.fa.fa-home.fa-4x
+      h1
+        = link_to "Funny Movies", root_path
+    .account-wrapper
+      - if user_signed_in?
+        span
+          | Welcome 
+          = current_user.email
+        = link_to "Share a movie", new_movie_path, class: 'header-button link-button'
+        = link_to "Logout", destroy_user_session_path, class: "header-button link-button", :method => :delete
+      - else
+        = form_tag user_session_path, method: 'post'
+          input[name="user[email]" placeholder="Username" type="email"]
+          input.mr-left-10[name="user[password]" type="password" placeholder="Password"]
+          button.header-button[type="submit"]
+            span
+              | Login / Register
+  .container-fluid
+    - if notice.present?
+      p.notice
+        = notice
+    - if alert.present?
+      p.alert
+        = alert

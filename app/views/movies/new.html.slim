@@ -1,0 +1,15 @@
+.movie-form-wrapper
+  = form_tag movies_path, method: "post", class: "movie-form"
+    .movie-form-title
+      span
+        | Share a Youtube movie
+    .action-wrapper
+      .movie-input-group
+        .movie-input-label
+          span
+            | Youtube URL: 
+        input[name="movie[url]" type="text"]
+      .movie-input-group
+        .movie-input-label
+        button[type="submit"]
+          | Share

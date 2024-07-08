@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Funny Movie
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = action_cable_meta_tag
+    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js'
+    = javascript_include_tag 'toastr_config'
+  body
+    = render "shared/header"
+    .body-wrapper
+      = yield
+    - if notice.present?
+      = javascript_tag "toastr.success('#{j notice}')"
+    - if alert.present?
+      = javascript_tag "toastr.error('#{j alert}')"

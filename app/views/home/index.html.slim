@@ -1,0 +1,44 @@
+.movies-wrapper
+  - @movies.includes(:votes, :user).each do |movie|
+    - vote_ups = movie.votes.select(&:up?).to_a
+    - vote_downs = movie.votes.select(&:down?).to_a
+    - vote_up = vote_ups.find { |v| v.user_id == current_user&.id }
+    - vote_down = vote_downs.find { |v| v.user_id == current_user&.id }
+    .movie-item-wrapper
+      .movie-iframe-wrapper
+        iframe src="#{movie.embed_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"
+      .movie-content
+        .movie-title-wrapper
+          h4 = movie.title
+        .movie-author-wrapper
+          .movie-author
+            p
+              | Shared by: 
+              = movie.user.email
+          .vote-wrapper
+            - if vote_down.present?
+              = link_to vote_path(vote_down), id: "vote-#{vote_down.id}", rel: "nofollow", "data-method": "delete" do 
+                i.fa.fa-thumbs-down.fa-2x          
+            - elsif vote_up.present?
+              = link_to vote_path(vote_up), id: "vote-#{vote_up.id}", rel: "nofollow", "data-method": "delete" do 
+                i.fa.fa-thumbs-up.fa-2x          
+            - else
+              = link_to votes_path('vote[vote_type]' => 'up', 'vote[movie_id]' => movie.id), id: "vote-up-#{movie.id}", "data-method": "POST" do
+                i.fa.fa-thumbs-o-up.fa-2x
+              = link_to votes_path('vote[vote_type]' => 'down', 'vote[movie_id]' => movie.id), id: "vote-down-#{movie.id}", "data-method": "POST" do
+                i.fa.fa-thumbs-o-down.fa-2x          
+            
+        .movie-vote-result-wrapper
+          .movie-vote-result class="movie-1-#{movie.id}"      
+            span
+              = movie.vote_ups_count
+            i.fa.fa-thumbs-o-up.fa-1x
+          .movie-vote-result class="movie-2-#{movie.id}"    
+            span
+              = movie.vote_downs_count
+            i.fa.fa-thumbs-o-down.fa-1x
+        .movie-description-wrapper
+          p
+            | Description: 
+          p
+            = movie.description
