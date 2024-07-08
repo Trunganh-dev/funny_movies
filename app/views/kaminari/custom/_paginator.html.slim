@@ -1,0 +1,9 @@
+- if paginator.total_pages > 1
+  ul.pagination
+    - paginator.each_page do |page|
+      - if page.left_outer? || page.right_outer? || page.inside_window?
+        li class=(page.current? ? 'active' : '')
+          = link_to page, params: params.merge(page: page, only_path: true)
+      - elsif page.gap?
+        li.gap
+          = link_to '&hellip;'.html_safe, '#'

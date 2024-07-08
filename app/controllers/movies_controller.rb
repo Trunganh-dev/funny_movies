@@ -11,13 +11,13 @@ class MoviesController < ApplicationController
   def create
     @movie = current_user.movies.build
     handle_params(@movie, normalize_parameters)
-    if @movie.save!
+    if @movie.save
       ActionCable.server.broadcast('notification_channel',
-                                   { message: "A new video has been shared: #{@movie.title}" })
-      return redirect_to root_path, notice: I18n.t('notices.share_success')
+                                   { message: "A new video has been shared by #{current_user.email}: #{@movie.title}" })
+      redirect_to root_path, notice: I18n.t('notices.share_success')
+    else
+      redirect_to new_movie_path, alert: @movie.errors.full_messages.join(', ')
     end
-
-    redirect_to new_movie_path, alert: I18n.t('notices.share_error')
   rescue VideoInfo::UrlError
     redirect_to new_movie_path, alert: I18n.t('notices.invalid_url')
   rescue StandardError => e

@@ -1,0 +1,5 @@
+- if @movies.total_pages > 1
+  ul.pagination
+    - (1..@movies.total_pages).each do |i|
+      li class=(i == @movies.current_page ? 'active' : '')
+        = link_to i, url_for(page: i)
