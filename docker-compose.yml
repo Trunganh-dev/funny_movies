@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: share_video_development
+      MYSQL_USER: ruby
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    command: bash -c "wait-for-it.sh db:3306 -- wait-for-it.sh redis:6379 -- rm -f tmp/pids/server.pid && ./bin/webpack-dev-server & rails s -b '0.0.0.0'"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - "3035:3035"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_USERNAME: ruby
+      DATABASE_PASSWORD: password
+      MYSQL_HOSTNAME: db
+      REDIS_URL: redis://redis:6379/0
+
+volumes:
+  mysql_data:
